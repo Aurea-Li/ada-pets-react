@@ -12,10 +12,17 @@ const PetList = (props) => {
     props.onSelectPet(index);
   };
 
+  const onRemovePet = (index) => {
+    props.onRemovePet(index);
+  }
+
   const petList = props.pets.map((pet, i) => {
-    return <PetCard key={i}
-                    {...pet}
-                    onSelectPet={onSelectPet} />
+    return (<PetCard
+            key={i}
+            {...pet}
+            onSelectPet={onSelectPet}
+            onRemovePet={onRemovePet} />
+        )
   });
 
   return (
@@ -28,6 +35,7 @@ const PetList = (props) => {
 PetList.propTypes = {
   pets: PropTypes.array.isRequired,
   onSelectPet: PropTypes.func,
+  onRemovePet: PropTypes.func,
 };
 
 export default PetList;

@@ -10,12 +10,13 @@ import speciesEmoji from '../speciesEmoji';
 const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
-  const removePet = () => {
-    console.log('test');
-  };
 
   const onSelectPet = () => {
     props.onSelectPet(id);
+  };
+
+  const onRemovePet = () => {
+    props.onRemovePet(id);
   };
 
   return (
@@ -34,7 +35,7 @@ const PetCard = (props) => {
           type="button"
           className="btn btn-danger pet-card--close-btn"
           aria-label="Remove"
-          onClick={removePet}
+          onClick={onRemovePet}
           >
             Remove
         </button>

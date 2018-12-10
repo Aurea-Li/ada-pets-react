@@ -20,12 +20,22 @@ class App extends Component {
   }
 
   onSelectPet = (index) => {
-    const petList = this.state.petList;
+    const { petList } = this.state;
     const petIndex = petList.findIndex(pet => pet.id === index);
 
     const pet = petList[petIndex];
     this.setState({
       currentPet: pet
+    });
+  };
+
+  onRemovePet = (index) => {
+    const { petList } = this.state;
+    const petIndex = petList.findIndex(pet => pet.id === index);
+
+    petList.splice(petIndex,1);
+    this.setState({
+      petList: petList
     });
   };
 
@@ -54,6 +64,7 @@ class App extends Component {
         <section className="pet-list-wrapper">
           <PetList pets={petList}
                     onSelectPet = {this.onSelectPet}
+                    onRemovePet = {this.onRemovePet}
                     />
         </section>
 
