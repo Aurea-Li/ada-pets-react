@@ -11,14 +11,6 @@ const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
 
-  const onSelectPet = () => {
-    props.onSelectPet(id);
-  };
-
-  const onRemovePet = () => {
-    props.onRemovePet(id);
-  };
-
   return (
     <div className="card pet-card">
 
@@ -27,7 +19,7 @@ const PetCard = (props) => {
       { speciesEmoji(species) } {id} - {name}
         <button
           className="btn btn-primary pet-card--select-pet-btn"
-          onClick={onSelectPet}
+          onClick={() => props.onSelectPet(id)}
           >
             Select
         </button>
@@ -35,7 +27,7 @@ const PetCard = (props) => {
           type="button"
           className="btn btn-danger pet-card--close-btn"
           aria-label="Remove"
-          onClick={onRemovePet}
+          onClick={() => props.onRemovePet(id)}
           >
             Remove
         </button>

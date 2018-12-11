@@ -8,20 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const PetList = (props) => {
 
 
-  const onSelectPet = (index) => {
-    props.onSelectPet(index);
-  };
-
-  const onRemovePet = (index) => {
-    props.onRemovePet(index);
-  }
-
   const petList = props.pets.map((pet, i) => {
     return (<PetCard
             key={i}
             {...pet}
-            onSelectPet={onSelectPet}
-            onRemovePet={onRemovePet} />
+            onSelectPet={(index) => props.onSelectPet(index)}
+            onRemovePet={(index) => props.onRemovePet(index)} />
         )
   });
 
